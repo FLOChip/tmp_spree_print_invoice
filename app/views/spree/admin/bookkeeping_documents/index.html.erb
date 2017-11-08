@@ -86,6 +86,7 @@
 <% end %>
 
 <% if @bookkeeping_documents.any? %>
+<div class="table-responsive">
   <table class="table" id="listing_orders" data-hook>
     <thead>
       <tr data-hook="printables_index_headers">
@@ -116,6 +117,7 @@
     <% end %>
     </tbody>
   </table>
+</div>
 <% else %>
   <div class="alert alert-info no-objects-found">
     <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::BookkeepingDocument)) %>,
