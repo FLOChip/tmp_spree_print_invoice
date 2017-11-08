@@ -94,6 +94,7 @@
         <th>Document Type</th>
         <th>Number</th>
         <th>First Name</th>
+        <th>Last Name</th>
         <th>Email</th>
         <th>Total</th>
         <th data-hook="admin_orders_index_header_actions" class="actions"></th>
@@ -106,6 +107,7 @@
         <td><%= I18n.t(bookkeeping_document.document_type, scope: [:spree, :print_invoice]) %></td>
         <td><%= bookkeeping_document.number %></td>
         <td><%= bookkeeping_document.firstname %></td>
+        <td><%= bookkeeping_document.lastname %></td>
         <td><%= bookkeeping_document.email %></td>
         <td><%= bookkeeping_document.display_total.to_html %></td>
         <td class='actions actions-1' data-hook="admin_orders_index_row_actions">
