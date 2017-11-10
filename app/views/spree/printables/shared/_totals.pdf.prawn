@@ -30,7 +30,7 @@ invoice.payments.each do |payment|
     ),
     payment.display_amount.to_s
   ]
-  total_payments += payment.amount
+  # total_payments += payment.amount
 end
 
 totals_table_width = [0.875, 0.125].map { |w| w * pdf.bounds.width }
