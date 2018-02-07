@@ -1,14 +1,10 @@
 pdf.repeat(:all) do
-  pdf.grid([7,0], [7,4]).bounding_box do
+  pdf.grid([5,10], [0,0]).bounding_box do
+    empty_cell = pdf.make_cell(content: "", :border_colors => "ffffff")
+    billing_content = pdf.make_cell(content: "123", :border_colors => ["ffffff", "ffffff", "000000", "eeeeee"], align: :center)
+    shipping_content = pdf.make_cell(content: "123", :border_colors => ["ffffff", "eeeeee", "eeeeee", "eeeeee"])
 
-    data  = []
-    data << [pdf.make_cell(content: Spree.t(:vat, scope: :print_invoice), colspan: 2, align: :center)]
-    data << [pdf.make_cell(content: '', colspan: 2)]
-    data << [pdf.make_cell(content: Spree::PrintInvoice::Config[:footer_left],  align: :left),
-    pdf.make_cell(content: Spree::PrintInvoice::Config[:footer_right], align: :right)]
-
-    pdf.table(data, position: :center, column_widths: [pdf.bounds.width / 2, pdf.bounds.width / 2]) do
-      row(0..2).style borders: []
-    end
+    data = [[empty_cell, billing_content, empty_cell]]
+    pdf.table(data, position: :center, column_widths: [pdf.bounds.width / 5, pdf.bounds.width / 5 * 3, pdf.bounds.width / 5])
   end
 end

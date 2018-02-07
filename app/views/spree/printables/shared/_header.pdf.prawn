@@ -1,14 +1,17 @@
-im = Rails.application.assets.find_asset(Spree::PrintInvoice::Config[:logo_path])
+im = Rails.application.assets.find_asset('doc/logo-tmp.png')
+xjy = Rails.application.assets.find_asset('doc/logo-xjy.png')
 
 if im && File.exist?(im.pathname)
   pdf.image im.filename, vposition: :top, height: 40, scale: Spree::PrintInvoice::Config[:logo_scale]
 end
 
-pdf.grid([0,3], [1,4]).bounding_box do
-  pdf.text Spree.t(printable.document_type, scope: :print_invoice), align: :right, style: :bold, size: 18
-  pdf.move_down 4
+pdf.grid([0,0], [0,4]).bounding_box do
+  pdf.text "Xin Ju Yuan Sdn Bhd (626373-M)", align: :center
+  pdf.text "17-2 (1st Floor), Jalan SS23/15, Taman SEA", align: :center
+  pdf.text "47400 Petaling Jaya, Selangor, Malaysia", align: :center
+  pdf.text "Email: admin@theminipuer.com", align: :center
+end
 
-  pdf.text Spree.t(:invoice_number, scope: :print_invoice, number: printable.number), align: :right
-  pdf.move_down 2
-  pdf.text Spree.t(:invoice_date, scope: :print_invoice, date: I18n.l(printable.date)), align: :right
+if xjy && File.exist?(xjy.pathname)
+  pdf.image xjy.filename, vposition: :top, position: :right, height: 40, scale: Spree::PrintInvoice::Config[:logo_scale]
 end
