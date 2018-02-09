@@ -8,7 +8,9 @@ module Spree
                    :item_total,
                    :total,
                    :payments,
-                   :shipments
+                   :shipments,
+                   :promo_total,
+                   :mini_points
 
     def items
       printable.line_items.map do |item|
@@ -29,6 +31,14 @@ module Spree
 
     def lastname
       printable.tax_address.lastname
+    end
+
+    def promo_total
+      printable.promo_total
+    end
+
+    def mini_points
+      printable.mini_points
     end
 
     private

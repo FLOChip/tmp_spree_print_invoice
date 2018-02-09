@@ -1,8 +1,10 @@
 # TOTALS
 totals = []
 
+totals << [pdf.make_cell(content: "Promo Code/Voucher"), pdf.make_cell(content: "(" + number_with_precision(invoice.promo_total, precision: 2).to_s + ")", :border_colors => 'eeeeee')]
+totals << [pdf.make_cell(content: "Mini Points"), pdf.make_cell(content: "(" + invoice.mini_points.to_s + ")", :border_colors => ['eeeeee', 'eeeeee', '999999', 'eeeeee'])]
 # Subtotal
-totals << [pdf.make_cell(content: Spree.t(:subtotal)), pdf.make_cell(content: invoice.display_item_total.to_s, :border_colors => 'eeeeee')]
+totals << [pdf.make_cell(content: Spree.t(:subtotal)), pdf.make_cell(content: invoice.display_item_total.to_s, :border_colors => ['999999', 'eeeeee', 'eeeeee', 'eeeeee'])]
 
 # Adjustments
 invoice.adjustments.each do |adjustment|
@@ -15,7 +17,7 @@ invoice.shipments.each do |shipment|
 end
 
 # Totals
-totals << [pdf.make_cell(content: Spree.t(:order_total)), pdf.make_cell(content: invoice.display_total.to_s, :border_colors => 'eeeeee')]
+totals << [pdf.make_cell(content: Spree.t(:order_total)), pdf.make_cell(content: invoice.display_total.to_s, :border_colors => ['999999', 'eeeeee', 'eeeeee', 'eeeeee'], font_style: :bold)]
 
 # Payments
 # total_payments = 0.0
